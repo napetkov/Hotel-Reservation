@@ -9,19 +9,20 @@ let reservation =
     email: null
 }
 
+document.querySelector('#new-reservation').addEventListener('click', (e) => cleanData(e));
+
 function changeContent(className) {
     document.querySelectorAll('.custom-form').forEach(div => div.classList.add('hidden'));
     if( document.querySelector(`.${className}`) != null){
     document.querySelector(`.${className}`).classList.remove('hidden');
     }
+    console.log(className)
 }
-
-document.querySelector('#new-reservation').addEventListener('click', (e) => cleanData(e));
 
 function cleanData(e) {
+    e.preventDefault();
     changeContent('search-form-content');
 }
-
 
 document.querySelector('#search-back-btn').addEventListener('click', (e) => fillSearchForm(e));
 
@@ -60,9 +61,11 @@ function findRoom(e) {
     console.log(reservation);
     changeContent('guest-details-form-content');
 
-changeContent('search-form-content');
-document.querySelector('#search-form-button').addEventListener('click', (e) => searchFormData(e));
 }
+
+// changeContent('search-form-content');
+document.querySelector('#search-form-button').addEventListener('click', (e) => searchFormData(e));
+
 function searchFormData(e) {
     e.preventDefault();
     const data = e.target.parentElement;
