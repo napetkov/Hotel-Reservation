@@ -72,10 +72,9 @@ function searchFormData(e) {
     if (checkIn != '' && checkOut != '' && people != '' &&
         new Date(checkIn) <= new Date(checkOut)) {
         reservation.startDate = checkIn;
-        reservation.endDate = checkOut;
         reservation.guestsCount = people;
         console.log(reservation);
         changeContent('search-result-form-content');
     }
-
+}
 }
